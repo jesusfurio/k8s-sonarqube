@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: sonar-data
+  namespace: sonarqube
+spec:
+  accessModes:
+  - ReadWriteOnce
+  storageClassName: default
+  volumeMode: Filesystem
+  dataSource:
+    name: sonarqube
+    kind: PersistentVolumeClaim
+    apiGroup: ""
+  resources:
+    requests:
+      storage: 31Gi
