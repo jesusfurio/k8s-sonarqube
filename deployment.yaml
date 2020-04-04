@@ -12,6 +12,27 @@ spec:
       labels:
         app: sonarqube
     spec:
+      initContainers:
+        - name: set-sonarqube-data-permissions
+          image: alpine:3.11
+          command:
+            - chown
+            - -R
+            - 999:999
+            - /opt/sonarqube/data
+          volumeMounts:
+          - name: sonar-data
+            mountPath: /opt/sonarqube/data
+        - name: set-sonarqube-extensions-permissions
+          image: alpine:3.11
+          command:
+            - chown
+            - -R
+            - 999:999
+            - /opt/sonarqube/extensions
+          volumeMounts:
+          - name: sonar-data
+            mountPath: /opt/sonarqube/extensions
       containers:
         - name: sonarqube
           image: sonarqube:latest

@@ -1,6 +1,5 @@
-k8s-sonarqube
 ![alt text](https://miro.medium.com/fit/c/1838/551/1*zf72LjVfgiRJVmGyUY3Rjg.png) 
-# Despliegue de servidor Jenkins y esclavos bajo demanda.
+# Despliegue de SonarQube en Kubernetes.
 En este repositorio, podreis encontrar los ficheros y las instrucciones necesarias para desplegar un entorno de Jenkins en Kubernetes.
 Tendremos un master desplegado y los esclavos se crearán bajo demanda al ejecutar una Pipeline. De esta manera optimizaremos recursos en nuestra infraestructura y nos aseguraremos de utilizar únicamente los necesarios.
 
@@ -38,7 +37,7 @@ Vamos a desplegar dos servicios. Un Nodeport para exponer nuestra aplicación al
 kubectl apply -f deployment.yaml
 ```
 En el Pod expondremos el puerto 9000 para acceder a SonarQube.
-Previamente, antes de que el pod de Sonarqube se despliegue, lanzaremos un contenedor con Alpine para que SonarQube tenga permisos de acceso al volumen creado.
+Previamente, antes de que el pod de Sonarqube se despliegue, lanzaremos dos contenedores con Alpine para que SonarQube tenga permisos de acceso a los volumenes creado.
 Una vez desplegado podremos acceder a nuestro SonarQube con la URL de nuestro cluster o minikube y el puerto facilitado por nuestro NodePort.
 
 ## Construido con 🛠️
